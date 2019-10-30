@@ -31,6 +31,22 @@ let CLIENT_NAME = "pusher-websocket-swift"
         connection.createGlobalChannel()
     }
 
+    /// This function used in Liquid to add custom params to URL
+    public init(
+        key: String,
+        options: PusherClientOptions = PusherClientOptions(),
+        nativePusher: NativePusher? = nil,
+        params: [String: Any]
+    ) {
+        self.key = key
+        let urlString = constructUrl(key: key, options: options, params: params)
+        let ws = WebSocket(url: URL(string: urlString)!)
+        connection = PusherConnection(key: key, socket: ws, url: urlString, options: options)
+        connection.createGlobalChannel()
+        self.nativePusher = nativePusher ?? NativePusher()
+        self.nativePusher.setPusherAppKey(pusherAppKey: key)
+    }
+    
     /**
         Subscribes the client to a new channel
 
@@ -177,4 +193,13 @@ func constructUrl(key: String, options: PusherClientOptions) -> String {
         url = "ws://\(options.host):\(options.port)/app/\(key)"
     }
     return "\(url)?client=\(CLIENT_NAME)&version=\(VERSION)&protocol=\(PROTOCOL)"
+}
+
+
+func constructUrl(key: String, options: PusherClientOptions, params: [String: Any]) -> String {
+    var url = constructUrl(key: key, options: options)
+    
+    params.forEach { url += "&\($0.key)=\($0.value)" }
+    
+    return url
 }
