@@ -35,7 +35,6 @@ let CLIENT_NAME = "pusher-websocket-swift"
     public init(
         key: String,
         options: PusherClientOptions = PusherClientOptions(),
-        nativePusher: NativePusher? = nil,
         params: [String: Any]
     ) {
         self.key = key
@@ -43,8 +42,6 @@ let CLIENT_NAME = "pusher-websocket-swift"
         let ws = WebSocket(url: URL(string: urlString)!)
         connection = PusherConnection(key: key, socket: ws, url: urlString, options: options)
         connection.createGlobalChannel()
-        self.nativePusher = nativePusher ?? NativePusher()
-        self.nativePusher.setPusherAppKey(pusherAppKey: key)
     }
     
     /**
