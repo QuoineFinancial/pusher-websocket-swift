@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "CryptoSwift",
-        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
+        "package": "NWWebSocket",
+        "repositoryURL": "https://github.com/pusher/NWWebSocket.git",
         "state": {
           "branch": null,
-          "revision": "5da70ba744d58d772201f03600eb16c53197652d",
-          "version": "0.15.0"
+          "revision": "241b5bf7df4fef930e8085483124e77643f108f0",
+          "version": "0.3.0"
         }
       },
       {
@@ -15,17 +15,8 @@
         "repositoryURL": "https://github.com/ashleymills/Reachability.swift.git",
         "state": {
           "branch": null,
-          "revision": "6b50ea803760a781b9abe0ba2412092ecef165e4",
-          "version": "4.3.0"
-        }
-      },
-      {
-        "package": "Starscream",
-        "repositoryURL": "https://github.com/daltoniam/Starscream.git",
-        "state": {
-          "branch": null,
-          "revision": "ebdc260ea64e68f7569c62e8744b5cd15d3a49d6",
-          "version": "3.0.6"
+          "revision": "98e968e7b6c1318fb61df23e347bc319761e8acb",
+          "version": "5.0.0"
         }
       }
     ]

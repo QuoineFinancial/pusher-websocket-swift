@@ -4,7 +4,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/pusher/pusher-websocket-swift/compare/7.2.0...HEAD)
+## [Unreleased](https://github.com/pusher/pusher-websocket-swift/compare/9.0.0...HEAD)
+
+## [9.0.0](https://github.com/pusher/pusher-websocket-swift/compare/8.0.0...9.0.0) - 2020-10-09
+
+### Added
+
+- Connects to Pusher servers using a WebSocket client that is fully-native code.
+- [Pusher Channels Protocol closure codes](https://pusher.com/docs/channels/library_auth_reference/pusher-websockets-protocol#connection-closure) are now respected when attempting to reconnect to Pusher servers after a disconnection.
+
+### Changed
+
+- The `autoReconnect` option is now ignored if a received closure code is from the Channels Protocol closure code range.
+- The SDK minimum deployment targets are now: iOS 13.0, macOS 10.15 and tvOS 13.0.
+- Fixed some typos in the README.
+- Removed BETA label for Private encrypted channels feature in the README.
+- Clarified in the README which frameworks to import in your project if you are integrating the SDK using Carthage.
+
+### Removed
+
+- Starscream is no longer a dependency.
+
+## [8.0.0](https://github.com/pusher/pusher-websocket-swift/compare/7.2.0...8.0.0) - 2020-04-27
+
+### Added
+
+- Added support for [end-to-end encryption](https://pusher.com/docs/channels/using_channels/encrypted-channels). There is a new target: `PusherSwiftWithEncryption` and a new dependency for that target `Sodium`. The original `PusherSwift` target does not require `Sodium` and has all the same features as `PusherSwiftWithEncryption` except the ability to decrypt events. You can find details about how to use `PusherSwiftWithEncryption` in the [README](https://github.com/pusher/pusher-websocket-swift#private-encrypted-channels-beta). As part of this feature, there is a new function in the `PusherDelegate`: `failedToDecryptEvent`, and channel names prefixed with `private-encrypted-` are now interpreted as encrypted channels in both targets.
+
+### Changed
+
+- The `encrypted` parameter for `PusherClientOptions` has been renamed to `useTLS`. Its behavior and default value (`true`) are unchanged.
+- Updated to Swift 5.0 and updated dependencies ([@JonathanDowning](https://github.com/JonathanDowning)).
+
+### Removed
+
+- CryptoSwift is no longer a dependency.
 
 ## [7.2.0](https://github.com/pusher/pusher-websocket-swift/compare/7.1.0...7.2.0) - 2019-10-18
 
